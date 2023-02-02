@@ -359,6 +359,9 @@ print(f"option 4 : {len(range(2, 10001, 2))}")
 ## la méthode .count(0) va compter le nombre d'éléments 0 dans la liste (soit le nombre de nombres pairs)
 print(f"option 5 : {([i % 2 for i in range(2, 10001)]).count(0)}")
 
+# ********************* #
+#  Jeudi 02/02/2023  #
+# ********************* #
 tuple_prenoms = ("Gustave", "Solange", "Alphonce")
 liste_prenoms = list(tuple_prenoms)
 print(tuple_prenoms)
@@ -420,3 +423,90 @@ liste_aleatoire1 = []
 for i in range(102):
     liste_aleatoire1.append(random.randint(-5, 40))
 print(liste_aleatoire1)
+
+import random
+
+
+def recup_petite_valeur(valeur):
+    petite_valeur = valeur[0]
+    for valeur in valeur:
+        if valeur < petite_valeur:
+            petite_valeur = valeur
+    return petite_valeur
+
+
+def recup_grande_valeur(valeur):
+    grande_valeur = valeur[0]
+    for valeur in valeur:
+        if valeur > grande_valeur:
+            grande_valeur = valeur
+    return grande_valeur
+
+# Genération de la liste aléatoire
+liste_aleatoire = [random.randint(-5, 40) for _ in range(102)]
+print(liste_aleatoire)
+
+
+print(f"Recuperer la petite valeur: {recup_petite_valeur(liste_aleatoire)}")
+print(f"Recuperer la grange valeur: {recup_grande_valeur(liste_aleatoire)}")
+
+
+# stoker toutes les values negatives
+negative = [i for i in liste_aleatoire if i < 0]
+print(negative)
+
+# Alerter si le nombre de nombres negatives superior de 5
+if len(negative) > 5:
+    print("ALERT !!! Le nombre de nombres negatives superior de 5")
+
+# autre option de genérer de la liste aléatoire
+liste_aleatoire1 = []
+for i in range(102):
+    liste_aleatoire1.append(random.randint(-5, 40))
+print(liste_aleatoire1)
+
+prenoms = ["Gabrielle", "Alphonce", "Kevin", "Loana"]
+nombres = [8, 52, 0, 3.2, -5.6, 7, -23]
+
+prenoms.sort(reverse=True)
+nombres.sort()
+
+print(prenoms)
+print(nombres)
+
+i_prenoms = prenoms.index("Gabrielle")
+i_nombres = nombres.index(52)
+i_nombres = nombres.index(53) # ValueError: 53 is not in list
+
+print(i_prenoms)
+print(i_nombres)
+
+prenoms1 = ["Gabrielle", "Alphonce", "Kevin", "Loana", "Gabrielle"]
+
+i_prenoms1 = prenoms.index("Gabrielle", 3)
+print(i_prenoms)
+
+prenoms3 = ["Gabrielle", "Alphonce", "Kevin", "Loana"]
+
+popped1 = prenoms3.pop()
+print(popped1, prenoms3)
+
+popped2 = prenoms3.pop(1)
+print(popped2, prenoms3)
+
+prenoms4 = ["Gabrielle", "Alphonce", "Kevin", "Loana", "Kevin"]
+
+prenoms4.remove("Kevin")
+print(prenoms4)
+
+prenoms5 = ["Gabrielle", "Alphonce", "Kevin", "Loana", "Kevin"]
+
+n = prenoms5.count("Kevin")
+print(n)
+
+prenoms6 = ["Gabrielle", "Alphonce", "Kevin", "Loana", "Kevin"]
+
+if "Kevin" in prenoms6:
+    print("Le test d'appartenance est positif.")
+else:
+    print("Ce prénom est absent de la liste.")
