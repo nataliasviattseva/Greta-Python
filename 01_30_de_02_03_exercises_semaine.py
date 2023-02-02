@@ -358,3 +358,65 @@ print(f"option 4 : {len(range(2, 10001, 2))}")
 ## [0, 1, 0, 1, 0 ...]
 ## la méthode .count(0) va compter le nombre d'éléments 0 dans la liste (soit le nombre de nombres pairs)
 print(f"option 5 : {([i % 2 for i in range(2, 10001)]).count(0)}")
+
+tuple_prenoms = ("Gustave", "Solange", "Alphonce")
+liste_prenoms = list(tuple_prenoms)
+print(tuple_prenoms)
+print(liste_prenoms)
+
+exemple_liste = [8, 6.9, "Kevin"]
+print(exemple_liste)
+print(len(exemple_liste))
+
+exemple_liste.append("Loana")
+print(exemple_liste)
+
+print(len(exemple_liste))
+
+element = exemple_liste[2]
+print(element)
+
+exemple_liste.insert(1, "Gabrielle")
+print(exemple_liste)
+
+jours1 = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
+jours2 = ["Samedi", "Dimanche"]
+
+jours1.extend(jours2)
+print(jours1)
+
+liste1 = [1, "", False, 4.6]
+liste2 = [2, "", True, 5.6]
+
+liste = liste1 + liste2
+print(liste)
+
+liste1.extend(liste2)
+print(liste1)
+
+jours = ["Lundi", "Mardi", "Jeudi"]
+# je souhaite insérer "Mercredi"
+jours[2:2] = ["Mercredi"]
+print(jours)
+
+unsorted_jours = ['Mercredi', 'Lundi', 'Mardi', 'Jeudi', 'Samedi', 'Dimanche', 'Vendredi']
+# TypeError: can only concatenate list (not "str") to list
+# sorted_jours = unsorted_jours[1:3] + unsorted_jours[0] + unsorted_jours[3] + unsorted_jours[4:6] + unsorted_jours[6]
+# Il faut toujors utiliser le slicing
+sorted_jours = unsorted_jours[1:3] + unsorted_jours[0:1] + unsorted_jours[3:4] + unsorted_jours[6:7] + unsorted_jours[4:6]
+print(sorted_jours)
+
+import random
+# Genération de la liste aléatoire
+liste_aleatoire = [random.randint(-5, 40) for _ in range(102)]
+print(liste_aleatoire)
+
+# stoker toutes les values negatives
+negative = [i for i in liste_aleatoire if i < 0]
+print(negative)
+
+# autre option de genérer de la liste aléatoire
+liste_aleatoire1 = []
+for i in range(102):
+    liste_aleatoire1.append(random.randint(-5, 40))
+print(liste_aleatoire1)
