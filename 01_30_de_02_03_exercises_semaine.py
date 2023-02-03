@@ -621,7 +621,7 @@ for i in range(1, 100):
 print(f"Il mangue {annee_manquant}")  # ici on encore augumente 1999, dont 2016 = 1999 = 17 (l'annee manguant)
 
 # deuxieme option (avec formule)
-for i in range(1, 1999):
+for i in range(1, 100):
     k = i * (i + 1)/2 # formule
     # print(f"Dans {i} annee c'etais {int(k)}") # c'est ligne pour suivre augementation de bougies
     if k >= 1999:
