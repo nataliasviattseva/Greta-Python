@@ -630,3 +630,13 @@ for i in range(1, 100):
         break
 
 print(f"Il mangue {int(annee_manquant_1)} ans.")
+
+lettre = input("lettre ? ")
+chaîne = input("chaîne ? ")
+occurance = 0
+
+for character in chaîne:
+    if lettre == character:
+        occurance += 1
+
+print(f"occurance : {occurance}")
