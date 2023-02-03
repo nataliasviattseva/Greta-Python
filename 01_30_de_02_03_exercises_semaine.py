@@ -360,7 +360,7 @@ print(f"option 4 : {len(range(2, 10001, 2))}")
 print(f"option 5 : {([i % 2 for i in range(2, 10001)]).count(0)}")
 
 # ********************* #
-#  Jeudi 02/02/2023  #
+#   Jeudi 02/02/2023    #
 # ********************* #
 tuple_prenoms = ("Gustave", "Solange", "Alphonce")
 liste_prenoms = list(tuple_prenoms)
@@ -510,3 +510,123 @@ if "Kevin" in prenoms6:
     print("Le test d'appartenance est positif.")
 else:
     print("Ce prénom est absent de la liste.")
+
+# ********************* #
+#  Vendredi 03/02/2023  #
+# ********************* #
+
+liste_initiale = list(range(0, 16))
+print(liste_initiale)
+
+liste_2 = []
+
+for n in liste_initiale:
+    liste_2.append(n*2)
+
+print(liste_2)
+
+liste_3 = [n*2 for n in liste_initiale]
+
+liste_pair = [n for n in liste_initiale if n % 2 == 0]
+print(liste_pair)
+
+nouvelle_liste = [n*2 if n % 2 == 0 else n*3 for n in liste_initiale]
+print(nouvelle_liste)
+
+liste_initiale = [[0, "a"], [2, "b"], [3, "c"]]
+nouvelle_liste = [n*2 for i in liste_initiale for n in i]
+print(nouvelle_liste)
+
+liste_initiale = [[0, "a"], [2, "b"], [3, "c"]]
+nouvelle_liste = [n*2 for i in liste_initiale for n in i]
+print(nouvelle_liste)
+
+liste_initiale = [[0, "a"], [2, "b"], [3, "c"]]
+nouvelle_liste = [n*2 if (type(n) == int) else n*3 if type(n) == str else n for i in liste_initiale for n in i ]
+print(nouvelle_liste)
+
+# fizz_buzz_liste = ['fizzbuzz' if i % 3 == 0 and i % 5 == 0 else 'fizz' if i % 3 == 0 else 'buzz' if i % 5 == 0 else i for i in range(1, 101)]
+# print(*fizz_buzz_liste, sep='\n')
+
+prenom = "Gustave"
+liste_lettres = [lettre for lettre in prenom]
+print(liste_lettres)
+
+print(*['Bonjour' for _ in range(int(input("Combien de fois ?\n")))], sep="\n")
+
+
+def permis(somme, somme_permis, years):
+    """Founction prends les 3 paramétrés: somme initiale, somme de permis et nombre des annees er retourne True si le
+    à la fin depasse le permis et False en outre cas somme """
+    for i in range(1, years + 1):
+        somme += somme * 2.5 / 100
+        print(f"Sum a la fin de {i} annee = {somme}")
+    if somme >= somme_permis:
+        return True
+    else:
+        return False
+
+
+def combien_des_annes_pour_permis(somme, somme_permis, years):
+    """Founction prends les 3 paramétrés: somme initiale, somme de permis et nombre des annees et retourne True si le
+    à la fin depasse le permis et False en outre cas somme """
+    compteur = 0
+    while somme > somme_permis:
+        somme += somme * 2.5 / 100
+        compteur += 1
+    return compteur
+
+
+print("Non" if permis(710, 805, 3) == False else "Oui")
+
+compteur = 1
+years = 1
+
+
+def combien_des_annees_pour_permis(somme, somme_permis):
+    """Founction prends les 3 paramétrés: somme initiale, somme de permis et retourne nombre des annees suiffisant pour
+    depasser le somme de permis"""
+    global years
+    global compteur
+    for i in range(years):
+        somme += somme * 2.5/100
+        print(f"Sum a la fin de {compteur} annee = {somme}")
+    if somme >= somme_permis:
+        print(f"Le montant total après {compteur} ans est de {somme:.2f}")
+    else:
+        compteur += 1
+        combien_des_annees_pour_permis(somme, somme_permis)
+
+
+combien_des_annees_pour_permis(710, 805)
+
+
+somme_initiale = 710
+q = 0.025
+n = 6
+somme = somme_initiale * (1 + q)**n
+print(somme)
+
+bougies_tarte = 0
+
+# premier option
+for i in range(1, 100):
+    # print(f"Dans {i} annee c'etais {bougies_tarte}") # c'est ligne pour suivre augementation de bougies
+    if bougies_tarte >= 1999:
+        print(f"L'Emir Hifik a {i} ans.")
+        break
+    bougies_tarte += i
+    annee_manquant = bougies_tarte - 1999
+
+print(f"Il mangue {annee_manquant}")  # ici on encore augumente 1999, dont 2016 = 1999 = 17 (l'annee manguant)
+
+# deuxieme option (avec formule)
+for i in range(1, 1999):
+    k = i * (i + 1)/2 # formule
+    # print(f"Dans {i} annee c'etais {int(k)}") # c'est ligne pour suivre augementation de bougies
+    if k >= 1999:
+        print(f"L'Emir Hifik a {i} ans.")
+        annee_manquant_1 = k - 1999  # ici on encore augumente 1999, dont 2016 = 1999 = 17 (l'annee manguant)
+        break
+
+print(f"Il mangue {int(annee_manquant_1)} ans.")
