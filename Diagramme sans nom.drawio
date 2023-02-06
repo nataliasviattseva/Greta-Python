@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" modified="2023-02-06T08:58:27.890Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" version="20.8.5" etag="33b0a4E90JWOESdR3E_-" type="github">
+  <diagram id="w0QPPAA4tSdxzbG4galK" name="Page-1">
+    <mxGraphModel dx="794" dy="404" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-1" target="o2Ks0StHCbJT89IdcJpc-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-1" value="DEBUT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-2" target="o2Ks0StHCbJT89IdcJpc-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-2" value="Déterminer qui commence le jou" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-3" target="o2Ks0StHCbJT89IdcJpc-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-3" value="Afficher le grille" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-4" target="o2Ks0StHCbJT89IdcJpc-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-4" value="Le joueur faire le tour&lt;br&gt;(sélection le colonne)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-14" value="Non" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-5" target="o2Ks0StHCbJT89IdcJpc-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-18" value="Oui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-5" target="o2Ks0StHCbJT89IdcJpc-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-5" value="Vérifier si le grille&lt;br&gt;est pleine" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="277.5" y="490" width="225" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-13" value="Non" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-6" target="o2Ks0StHCbJT89IdcJpc-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-20" value="Oui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-6" target="o2Ks0StHCbJT89IdcJpc-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-6" value="Vérifier si le colonne&lt;br&gt;est pleine" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="277.5" y="360" width="225" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-15" value="Non" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-7" target="o2Ks0StHCbJT89IdcJpc-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-25" value="Oui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-7" target="o2Ks0StHCbJT89IdcJpc-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-7" value="Vérifier si les 4 pions sont occupe horizontalement, verticalement ou en diagonale" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="272.5" y="630" width="235" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-8" target="o2Ks0StHCbJT89IdcJpc-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="780" y="840" />
+              <mxPoint x="780" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-8" value="Changer le joueur" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="810" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-17" value="Partie nulle" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="25" y="515" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="o2Ks0StHCbJT89IdcJpc-19" target="o2Ks0StHCbJT89IdcJpc-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="85" y="340" />
+              <mxPoint x="390" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-19" value="Cette colonne jéjà pleine" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="25" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o2Ks0StHCbJT89IdcJpc-24" value="Joueur courant gagné" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="15" y="675" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
