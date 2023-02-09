@@ -2,8 +2,6 @@
 ## Lundi 06/02/2023 ##
 # ****************** #
 
-import numpy as np
-
 def si_len_matrices_egal(mat_a, mat_b):
     """Si la dimentions sont identiques"""
     if len(mat_a) == len(mat_b) and len(mat_a[0]) == len(mat_b[0]):
@@ -120,6 +118,7 @@ mat_c, mat_d = [[2, 1], [1, 4]], [[-4, 2], [0, 2]]
 print(multiplication_matrices_1(mat_c, mat_d))
 print(multiplication_matrices_1(mat_d, mat_c))
 
+
 def verifier_que_matrice_carre(matrice):
     if len(matrice) == len(matrice[0]) == 2:
         return True
@@ -129,12 +128,33 @@ def verifier_que_matrice_carre(matrice):
 
 def calcul_determinant_matrice_carre(matrice):
     if verifier_que_matrice_carre(matrice):
-        for i in range(len(matrice)):
-            for j in range(i):
-                determinant = matrice_2_2[0][0] * matrice_2_2[1][1] - matrice_2_2[1][0] * matrice_2_2[0][1]
-        return determinant
+        determinant = matrice_2_2[0][0] * matrice_2_2[1][1] - matrice_2_2[1][0] * matrice_2_2[0][1]
     else:
-        "Matrice n'est pas carre"
+        determinant = 0
+    return determinant
+
+
+def calcul_inversion_matrice_carre(matrice):
+    det = calcul_determinant_matrice_carre(matrice)
+    if det != 0:
+        # Transposition de deux valeurs
+        tmp = matrice[0][0]
+        matrice[0][0] = matrice[1][1]
+        matrice[1][1] = tmp
+
+        matrice[0][1] *= -1
+        matrice[1][0] *= -1
+
+        mati = []
+        for ligne in matrice:
+            matj = []
+            for element in ligne:
+                matj.append(element * (1 / det))
+            mati.append(matj)
+        return mati
+    else:
+        print("Opération impossible. Le determinant est égale zero.")
+        return None
 
 
 def matrice_inversible(matrice):
@@ -156,6 +176,72 @@ def determiner_adjoint_matrice(matrice):
 
 
 matrice_2_2 = [[2, 5], [3, 7]]
-print(calcul_determinant_matrice_carre(matrice))
-print(calcul_determinant_matrice_carre(matrice_2_2))
-print(determiner_adjoint_matrice(matrice_2_2))
+print(f"Calcul le detrminant de matrice carré : \n{calcul_determinant_matrice_carre(matrice_2_2)}")
+print(f"Adjoint de matrice carré : \n{determiner_adjoint_matrice(matrice_2_2)}")
+print(f"Calcul l'inversion de matrice carré : \n{calcul_inversion_matrice_carre(matrice_2_2)}")
+
+# ****************** #
+## Mardi 07/02/2023 ##
+# ****************** #
+
+def elimin_lin_col(m, n, matrice_muneur):
+    # Retourne la matrice matrice_mineur sans la m-ième ligne et la n-ième colonne
+    matrice_mineur_lin = len(matrice_muneur)
+    result = []
+    rep = []
+    for i in range(matrice_mineur_lin):
+        if i != m:
+            for j in range(matrice_mineur_lin):
+                if j != n:
+                    result.append(matrice_muneur[i][j])
+    for k in range(0, len(result), matrice_mineur_lin - 1):
+        rep.append(result[k:k + matrice_mineur_lin - 1])
+    return rep
+
+
+matrice_3_3 = [[1, 1, 4], [2, -1, 3], [-2, 4, 3]]
+
+print(elimin_lin_col(1, 1, matrice_3_3))
+
+
+from tkinter import *
+from random import *
+
+
+def NouveauLance():
+    nb = randint(1, 6)
+    Texte.set('Resultat ->' + str(nb))
+
+
+def ClickButton():
+    Texte.set('BLABLA')
+
+
+# Création de la fenêtre principale (main window)
+Mafenetre = Tk()
+Mafenetre.title('Dé à 6 faces')
+
+# Création d'un widget Button (bouton lancer)
+BoutonLancer = Button(Mafenetre, text="Lancer")
+# BoutonLancer = Button(Mafenetre, text="Lancer", command=NouveauLance)
+
+# Positionnement du widjet avec la métode pack()
+BoutonLancer.pack(side=LEFT, padx=10, pady=10)
+
+BoutonMoi = Button(Mafenetre, text="Click me", command=ClickButton)
+BoutonMoi.pack(side=LEFT, padx=15, pady=15)
+
+# Création d'un widget Button (bouton Quitter)
+BoutonQuitter = Button(Mafenetre, text="Quitter", command=Mafenetre.destroy)
+BoutonQuitter.pack(side=LEFT, padx=15, pady=15)
+
+Texte = StringVar()
+
+# On appelle une fois la founction pout initialiser notre Texte
+NouveauLance()
+
+# Création d'un widget label (texte 'Resultat -> x')
+LabelResult = Label(Mafenetre, textvariable=Texte, fg='red', bg='white')
+LabelResult.pack(side=LEFT, padx=5, pady=5)
+
+Mafenetre.mainloop()
