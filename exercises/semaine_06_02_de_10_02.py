@@ -245,3 +245,167 @@ LabelResult = Label(Mafenetre, textvariable=Texte, fg='red', bg='white')
 LabelResult.pack(side=LEFT, padx=5, pady=5)
 
 Mafenetre.mainloop()
+
+# ********************* #
+## Vendredi 10/02/2023 ##
+# ********************* #
+
+dictionnaire_list = [["Ambulance", "Krankenwagen"], ["Hôpital", "Krankenhaus"], ["Infirmière", "Krankenschwester"]]
+
+for i, element in enumerate(dictionnaire_list):
+    if "Hôpital" in dictionnaire_list[i]:
+        print(dictionnaire_list[i][1])
+# resultat: Krankenhaus
+
+def traduction(mot):
+    global dictionnaire_list
+    for element in dictionnaire_list:
+        if element[0] == mot:
+            return element[1]
+    return "pas trouve"
+
+
+# Tests pour def traduction
+print("\nTests pour def traduction:")
+print(traduction("Hôpital"))
+print(traduction("Ambulance"))
+print(traduction("aaa"))
+# resultat:
+# Tests pour def traduction_for_for:
+# Krankenhaus
+# Krankenwagen
+# pas trouve
+
+
+def traduction_enumerate(mot):
+    for i, j in enumerate(dictionnaire_list):
+        if mot in dictionnaire_list[i]:
+            return dictionnaire_list[i][1]
+    return "pas trouve"
+
+
+# Tests pour def traduction_enumerate
+print("\nTests pour def traduction_enumerate:")
+print(traduction_enumerate("Hôpital"))
+print(traduction_enumerate("Ambulance"))
+print(traduction_enumerate("aaa"))
+# resultat:
+# Tests pour def traduction_for_for:
+# Krankenhaus
+# Krankenwagen
+# pas trouve
+
+
+def traduction_for_for(mot):
+    for i in dictionnaire_list:
+        for j in i:
+            if mot in i:
+                return i[1]
+    return "pas trouve"
+
+
+# Tests pour def traduction_enumerate
+print("\nTests pour def traduction_for_for:")
+print(traduction_for_for("Hôpital"))
+print(traduction_for_for("Ambulance"))
+print(traduction_for_for("aaa"))
+# resultat:
+# Tests pour def traduction_for_for:
+# Krankenhaus
+# Krankenwagen
+# pas trouve
+
+# création de dictionnaire
+dictionnaire = {}  # dictionnaire vide
+capitales = {"France": "Paris", "Allemagne": "Berlin"}
+
+# Outre manière de creation dictionnaire (list de tuples transforme en dict)
+liste_capitales = [("France", "Paris"), ("Allemagne", "Berlin")]
+capitales_1 = dict(liste_capitales)
+print(capitales_1)
+# resultat: {'France': 'Paris', 'Allemagne': 'Berlin'}
+
+# affichage avec le même clé
+capitales_changes= {"France": "Paris", "Allemagne": "Berlin", "France": "Marceille"}
+print(capitales_changes)
+# resultat: {'France': 'Marceille', 'Allemagne': 'Berlin'}
+
+# ajouter element dans le dictionnaire
+capitales["Islande"] = "Reykjavik"
+print(capitales)
+# resultat: {'France': 'Paris', 'Allemagne': 'Berlin', 'Islande': 'Reykjavik'}
+
+# acceder à une valeur
+result = capitales["Allemagne"]
+print(result)
+# resultat: Berlin
+
+# result = capitales["Syldavie"]
+# print(result)
+# resultat: KeyError: 'Syldavie'
+
+# get() avec 2 arguments: la clé et le résultat renvoyé au cas où la clé serait absente
+result = capitales.get("Syldavie", "non resolu")
+print(result)
+# resultat: non resolu
+
+result = capitales.get("Allemagne", "non resolu")
+print(result)
+# resultat: Berlin
+
+if "Islande" in capitales:
+    print(capitales["Islande"])
+# resultat: Reykjavik
+
+if "Reykjavik" in capitales:
+    print("Test d'appartanance réussi")
+else:
+    print("Cette clé est absente du dictionnaire")
+# resultat: Cette clé est absente du dictionnaire
+
+# mettre à jour une valeur
+capitales["France"] = "Marseille"
+print(capitales)
+# resultat: {'France': 'Marseille', 'Allemagne': 'Berlin', 'Islande': 'Reykjavik'}
+
+# utiliser un tupple comme le clé
+coords = {("Paris", "France"): ["48º51‘N", "22º1‘E"], ("Berlin", "Allemande"): ["52º31‘N", "13º24‘O"]}
+result = coords[("Paris", "France")]
+print(result)
+# resultat: ['48º51‘N', '22º1‘E']
+
+# supprimer un élément
+del capitales["Allemagne"]
+print(capitales)
+# resultat: {'France': 'Paris', 'Islande': 'Reykjavik'}
+
+# attention pour pas supprimer le dictionaire
+# del capitales
+# print(capitales)
+# resultat: NameError: name 'capitales' is not defined
+
+# fonction len()
+capitales = {'France': 'Paris', 'Allemagne': 'Berlin', 'Islande': 'Reykjavik'}
+print(len(capitales))
+# resultat: 3
+
+# dict.clear() supprime tous les éléments d'un dictionnaire. En clair, il le vide.
+capitales.clear()
+print(capitales)
+# resultat: {}
+
+# dict.items() retourne toutes les paires clé-valeur sous la forme d'une liste de tuples
+capitales = {'France': 'Paris', 'Allemagne': 'Berlin', 'Islande': 'Reykjavik'}
+result = capitales.items()
+print(result)
+# resultat: dict_items([('France', 'Paris'), ('Allemagne', 'Berlin'), ('Islande', 'Reykjavik')])
+
+# dict.keys() retourne toutes les clés du dictionnaire sous la forme d'une liste
+result = capitales.keys()
+print(result)
+# resultat: dict_keys(['France', 'Allemagne', 'Islande'])
+
+# dict.values() retourne toutes les valeurs du dictionnaire sous la forme d'une liste
+result = capitales.values()
+print(result)
+# resultat: dict_values(['Paris', 'Berlin', 'Reykjavik'])
