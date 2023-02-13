@@ -57,17 +57,30 @@ def jeton_tombe_dans_le_colonne(colonne, nouvelle_valeur):
 
 
 def quatre_a_la_suite(joueur):
+
     # verifier les quatres horizontalement
     for c in range(COLONNES - 3):
         for l in range(LIGNES):
             if grille[l][c] == joueur and grille[l][c+1] == joueur and grille[l][c+2] == joueur and grille[l][c+3] == joueur:
                 return True
+
     # verifier les quatres verticalement
     for c in range(COLONNES):
         for l in range(LIGNES - 3):
             if grille[l][c] == joueur and grille[l+1][c] == joueur and grille[l+2][c] == joueur and grille[l+3][c] == joueur:
                 return True
 
+    # verifier les quatres horizontalement positif
+    for c in range(COLONNES - 3):
+        for l in range(LIGNES - 3):
+            if grille[l][c] == joueur and grille[l+1][c+1] == joueur and grille[l+2][c+2] == joueur and grille[l+3][c+3] == joueur:
+                return True
+
+    # verifier les quatres horizontalement negatif
+    for c in range(COLONNES - 3):
+        for l in range(LIGNES - 3):
+            if grille[l][c] == joueur and grille[l-1][c-1] == joueur and grille[l-2][c-2] == joueur and grille[l-3][c-3] == joueur:
+                return True
 
 def changer_joueur():
     global current_joueur
