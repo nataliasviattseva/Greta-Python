@@ -125,10 +125,9 @@ scalaire.pack(anchor=NW, padx=5, pady=5)
 bouton_addition_matrices = Button(frame_2_1, text="Addition Matrices", command=resultat_addition)
 bouton_addition_matrices.pack(anchor=NW, padx=10, pady=4, fill=BOTH)
 
-#
 bouton_multiplication_scalaire = Button(frame_2_1, text="Multiplication Scalaire", command=resultat_multiplication_par_scalaire)
 bouton_multiplication_scalaire.pack(padx=10, pady=4, fill=BOTH)
-#
+
 bouton_transition = Button(frame_2_1, text="Transition", command=resultat_transition_matrice)
 bouton_transition.pack(padx=10, pady=4, fill=BOTH)
 
