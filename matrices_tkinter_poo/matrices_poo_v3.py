@@ -47,17 +47,30 @@ class Matrice(Frame):
         self.scalaire = Entry(self.cadre1, width=10, bg=COULEUR4)
         self.scalaire.grid(padx=10, row=1, column=2, sticky=N)
 
-        Button(self.cadre2, text="Mult. Scalaire Mat. 1", background=COULEUR3, command=self.resultat_multiplication_par_scalaire_mat_1).grid(column=0, row=0, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Mult. Scalaire Mat. 2", background=COULEUR3, command=self.resultat_multiplication_par_scalaire_mat_2).grid(column=1, row=0, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Transition Mat. 1", background=COULEUR3, command=self.resultat_transition_matrice_1).grid(column=0, row=1, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Transition Mat. 2", background=COULEUR3, command=self.resultat_transition_matrice_2).grid(column=1, row=1, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Determ. Mat. 1", background=COULEUR3, command=self.resultat_determinant_matrice_1).grid(column=0, row=2, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Determ. Mat. 2", background=COULEUR3, command=self.resultat_determinant_matrice_2).grid(column=1, row=2, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Inversion Mat. 1", background=COULEUR3, command=self.resultat_inversion_matrice_1).grid(column=0, row=3, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Inversion Mat. 2", background=COULEUR3, command=self.resultat_inversion_matrice_2).grid(column=1, row=3, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Addition Matrices", background=COULEUR3, command=self.resultat_addition).grid(column=2, row=0, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Mult. Matrices", background=COULEUR3, command=self.resultat_multiplication_matrices).grid(column=2, row=1, padx=5, pady=5, stick='we')
-        Button(self.cadre2, text="Quitter", background="red", command=fenetre.destroy).grid(column=2, row=3, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Mult. Scalaire Mat. 1", background=COULEUR3,
+               command=self.resultat_multiplication_par_scalaire_mat_1).grid(column=0, row=0, padx=5, pady=5,
+                                                                             stick='we')
+        Button(self.cadre2, text="Mult. Scalaire Mat. 2", background=COULEUR3,
+               command=self.resultat_multiplication_par_scalaire_mat_2).grid(column=1, row=0, padx=5, pady=5,
+                                                                             stick='we')
+        Button(self.cadre2, text="Transition Mat. 1", background=COULEUR3,
+               command=self.resultat_transition_matrice_1).grid(column=0, row=1, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Transition Mat. 2", background=COULEUR3,
+               command=self.resultat_transition_matrice_2).grid(column=1, row=1, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Determ. Mat. 1", background=COULEUR3,
+               command=self.resultat_determinant_matrice_1).grid(column=0, row=2, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Determ. Mat. 2", background=COULEUR3,
+               command=self.resultat_determinant_matrice_2).grid(column=1, row=2, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Inversion Mat. 1", background=COULEUR3,
+               command=self.resultat_inversion_matrice_1).grid(column=0, row=3, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Inversion Mat. 2", background=COULEUR3,
+               command=self.resultat_inversion_matrice_2).grid(column=1, row=3, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Addition Matrices", background=COULEUR3, command=self.resultat_addition).grid(
+            column=2, row=0, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Mult. Matrices", background=COULEUR3,
+               command=self.resultat_multiplication_matrices).grid(column=2, row=1, padx=5, pady=5, stick='we')
+        Button(self.cadre2, text="Quitter", background="red", command=fenetre.destroy).grid(column=2, row=3, padx=5,
+                                                                                            pady=5, stick='we')
 
         Label(self.cadre3, text="Resultat 1 :", bg=COULEUR2).grid(column=0, row=0, padx=10, sticky=W)
         self.text_result = Text(self.cadre3, width=50, height=8, bg=COULEUR4)
@@ -99,7 +112,7 @@ class Matrice(Frame):
         mat = self.get_matrice_2()
         matrice = multiplication_par_scalaire(mat, int(self.scalaire.get()))
         self.text_result.delete('1.0', END)
-        self.text_result.insert(END,f"{matrice[0][0]},{matrice[0][1]}\n{matrice[1][0]},{matrice[1][1]}")
+        self.text_result.insert(END, f"{matrice[0][0]},{matrice[0][1]}\n{matrice[1][0]},{matrice[1][1]}")
 
     def resultat_transition_matrice_1(self):
         mat = self.get_matrice_1()
@@ -154,11 +167,8 @@ class Matrice(Frame):
 
 if __name__ == "__main__":
     fenetre = Tk()
-    fenetre.title("НЕЧТО")
+    fenetre.title("Matrices")
     fenetre.geometry(SIZE)
     fenetre["bg"] = COULEUR1
     Matrice(fenetre)
     fenetre.mainloop()
-
-
-
