@@ -317,3 +317,156 @@ if __name__ == '__main__':
     EnterMessage(master=mafenetre)
 
     mafenetre.mainloop()
+
+
+# ****************** #
+## Jeudi 16/02/2023 ##
+# ****************** #
+
+import string
+
+
+class Alphabet_majuscules(object):
+    # classe mère
+
+    def __init__(self):
+        self.lettres_maj = string.ascii_uppercase
+        # équivalent à une chaine reprenant tout l'alphabet avec la métode upper()
+        # ou plus simplement une chaîne avec tout l'alphabet en majuscules
+
+
+class Alphabet_minuscules(Alphabet_majuscules):
+    # classe fille
+
+    def __init__(self):
+        Alphabet_majuscules.__init__(self)
+        self.lettres_min = self.lettres_maj.lower()
+
+
+class Alphabet_tri(Alphabet_minuscules):
+    # classe petite-fille
+
+    def __init__(self):
+        Alphabet_minuscules.__init__(self)
+        self.voyelles = []
+        self.consonnes = []
+        self.voyelles_maj = []
+        self.consonnes_maj = []
+        for lettre in self.lettres_min:
+            if lettre in "aeiouy":
+                self.voyelles.append(lettre)
+            else:
+                self.consonnes.append(lettre)
+        for lettre in self.lettres_maj:
+            if lettre in "AEIOUY":
+                self.voyelles_maj.append(lettre)
+            else:
+                self.consonnes_maj.append(lettre)
+
+    def listes_vers_chaines(self):
+        self.voyelles_chaine = "".join(self.voyelles)
+        self.consonnes_chaine = "".join(self.consonnes)
+        self.voyelles_chaine_maj = "".join(self.voyelles_maj)
+        self.consonnes_chaine_maj = "".join(self.consonnes_maj)
+
+    def voyelles_maj_my(self):
+        return [x.upper() for x in self.voyelles]
+
+    def consonnes_maj_my(self):
+        return [x.upper() for x in self.consonnes]
+
+
+test_1 = Alphabet_majuscules()
+print(f"test_1.lettres_maj : {test_1.lettres_maj}")
+
+test_2 = Alphabet_minuscules()
+print(f"test_2.lettres_maj : {test_2.lettres_maj}")
+print(f"test_2.lettres_min : {test_2.lettres_min}")
+
+test_3 = Alphabet_tri()
+print(f"test_3.voyelles : {test_3.voyelles}")
+print(f"test_3.consonnes : {test_3.consonnes}")
+test_3.listes_vers_chaines() # il faut appeler le method avant
+print(f"test_3.listes_vers_chaines : {test_3.listes_vers_chaines}")
+print(f"test_3.voyelles_chaine : {test_3.voyelles_chaine}")
+print(f"test_3.consonnes_chaine : {test_3.consonnes_chaine}")
+print(f"test_3.voyelles_chaine_maj : {test_3.voyelles_chaine_maj}")
+print(f"test_3.consonnes_chaine_maj : {test_3.consonnes_chaine_maj}")
+print(f"test_3.voyelles_maj : {test_3.voyelles_maj}")
+print(f"test_3.consonnes_maj : {test_3.consonnes_maj}")
+print(f"test_3.voyelles_maj_my() : {test_3.voyelles_maj_my()}")
+print(f"consonnes_maj_my() : {test_3.consonnes_maj_my()}")
+
+class Voiture:
+    """Classe représentant une voiture"""
+
+    def __init__(self):
+        """Constructeur de notre class"""
+
+        self.nombre_roues = 4
+        self.nombre_fauteuils = 1
+        self.moteur = "propulsion"
+
+        """méthode"""
+
+"""Création de l'objet"""
+ma_voiture = Voiture()
+
+print(ma_voiture.moteur)
+print(ma_voiture.nombre_roues)
+print(ma_voiture.nombre_fauteuils)
+
+
+class Citroen:
+
+    def __init__(self):
+
+        self.type_suspension = "Hydractives"
+        self.logo = "Chevrons"
+        self.marque = "Citroen"
+        self.couleur = "orange"
+
+
+ma_citroen = Citroen()
+
+print(ma_citroen.type_suspension)
+print(ma_citroen.logo)
+print(ma_citroen.marque)
+
+
+class BondBug(Voiture):
+
+    def __init__(self):
+        """Héritage de la classe Voiture()"""
+        Voiture.__init__(self)
+        self.marque = "Bond"
+        self.modele = "Bug"
+        self.nombre_roues = 3
+        self.nombre_fauteuils = 2
+
+
+ma_bug = BondBug()
+
+print(ma_bug.marque)
+print(ma_bug.moteur)
+print(ma_bug.nombre_roues)
+print(ma_bug.nombre_fauteuils)
+
+
+"""Tests d'héritage"""
+class CitroenDs(Voiture, Citroen):
+
+    def __init__(self):
+        Voiture.__init__(self)
+        Citroen.__init__(self)
+        self.modele = "DS de 1967"
+        self.couleur = "rouge"
+
+ma_super_DS = CitroenDs()
+
+print(ma_super_DS.nombre_roues)
+print(ma_super_DS.logo)
+print(ma_super_DS.marque)
+print(ma_super_DS.couleur)
+
+print(ma_citroen.couleur)
