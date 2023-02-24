@@ -54,9 +54,9 @@ class Personnage:
         print("__________________attaque___________________")
         if not self.est_mort() and not autre_personnage.est_mort():
             if not autre_personnage.esquive_attaque(self):  # autre_personnage.esquive == False
-                points_de_degats = round(0.6 * self.force)
-                print(f"points de degats : {points_de_degats}")
-                autre_personnage.vie -= points_de_degats
+                self.points_de_degats = round(0.6 * self.force)
+                print(f"points de degats : {self.points_de_degats}")
+                autre_personnage.sante -= self.points_de_degats
         elif self.est_mort():
             print(f"{self.nom} ne peut attaque personne: il est morte !")
         elif autre_personnage.est_mort():
@@ -66,7 +66,7 @@ class Personnage:
     def soigne(self, autre_personnage, points_de_soin):
         print("__________________soigne____________________")
         if not self.est_mort() and not autre_personnage.est_mort():
-            autre_personnage.vie += points_de_soin
+            autre_personnage.sante += points_de_soin
             print(f"{autre_personnage.nom} soigne {self.nom}.")
             print(f"{autre_personnage.nom} restature à {points_de_soin} de vie")
         elif autre_personnage.est_mort():
@@ -95,6 +95,55 @@ class Personnage:
 
     def se_deplace(self, points_de_deplacement):
         pass
+
+
+class Magicien:
+
+    def __init__(self):
+        self.metier = "magicien"
+
+    def faire_magie(self, points_de_magie):
+        pass
+
+
+class Human(Personnage, Magicien):
+
+    def __init__(self):
+        Personnage.__init__(self, self.nom, self.vie, self.force, self.endurance, self.rapidite, self.intelligence)
+        Magicien.__init__(self)
+        self.race = "Humain"
+
+
+class Hobbit(Personnage, Magicien):
+
+    def __init__(self):
+        Personnage.__init__(self, self.nom, self.vie, self.force, self.endurance, self.rapidite, self.intelligence)
+        Magicien.__init__(self)
+        self.race = "Hobbit"
+
+
+class Elfe(Personnage, Magicien):
+
+    def __init__(self):
+        Personnage.__init__(self, self.nom, self.vie, self.force, self.endurance, self.rapidite, self.intelligence)
+        Magicien.__init__(self)
+        self.race = "Elfe"
+
+
+class Nain(Personnage, Magicien):
+
+    def __init__(self):
+        Personnage.__init__(self, self.nom, self.vie, self.force, self.endurance, self.rapidite, self.intelligence)
+        Magicien.__init__(self)
+        self.race = "Nain"
+
+
+class Orque(Personnage, Magicien):
+
+    def __init__(self):
+        Personnage.__init__(self, self.nom, self.vie, self.force, self.endurance, self.rapidite, self.intelligence)
+        Magicien.__init__(self)
+        self.race = "Orque"
 
 
 pers_1 = Personnage(nom="Bilbon Sacquet", vie=5, force=6, endurance=5, rapidite=1, intelligence=5)
@@ -154,3 +203,6 @@ pers_2.affiche_etat()
 pers_2.attaque(pers_1)
 pers_1.affiche_etat()
 pers_2.affiche_etat()
+
+
+# pers_4 = Nain()
