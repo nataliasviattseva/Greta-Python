@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-import myDjangoProjet.fileManager as FM
-import myDjangoProjet.dataManager as DM
+import myDjangoProjet.file_manager as FM
+import myDjangoProjet.data_manager as DM
 
 
 def index(request):
@@ -10,8 +10,8 @@ def index(request):
     return render(request, 'index.html')
 
 
-def readCourriel():
-    print("- readCourriel :")
+def read_courriel():
+    print("- read courriel :")
     file_path = FM.FilePath("./static/txt/courriel.txt")
     print("filePath : " + str(file_path))
     fch = open(str(file_path), 'r')
@@ -20,18 +20,18 @@ def readCourriel():
     return courriel
 
 
-def checkCourriel(request):
-    print("- checkCourriel :")
+def check_courriel(request):
+    print("- check courriel :")
     rsps = request.GET['mailInput']
     print("rsps : " + rsps)
-    courriel = readCourriel()
+    courriel = read_courriel()
     if rsps == courriel:
         chk = "OK"
         print("courriel OK")
     else:
         print("courriel NO")
         chk = "NO"
-    return render(request, "courrielcheck.html", {"rsps": rsps, "chk": chk})
+    return render(request, "courriel_check.html", {"rsps": rsps, "chk": chk})
 
 
 def data_access_sqlite(request):
@@ -52,11 +52,11 @@ def data_access_postgresql(request):
     return render(request, 'data_display_postgresql.html', {'data_list': data_set})
 
 
-# def checkCourriel_avant_model(request):
-#     print("- checkCourriel :")
+# def check_courriel_avant_model(request):
+#     print("- check courriel :")
 #     rsps = request.GET['mailInput']
 #     print("rsps : " + rsps)
-#     courriel = readCourriel()
+#     courriel = read courriel()
 #     if rsps == courriel:
 #         print("Courriel OK !")
 #         html = """
