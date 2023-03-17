@@ -1,0 +1,97 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+
+import myDjangoProjet.fileManager as FM
+
+
+def index(request):
+    print("\t- Index.htmL -")
+    return render(request, 'index.html')
+
+
+def readCourriel():
+    print("- readCourriel :")
+    file_path = FM.FilePath("./static/txt/courriel.txt")
+    print("filePath : " + str(file_path))
+    fch = open(str(file_path), 'r')
+    courriel = fch.read()
+    print("fch courriel : " + courriel)
+    return courriel
+
+
+def checkCourriel(request):
+    print("- checkCourriel :")
+    rsps = request.GET['mailInput']
+    print("rsps : " + rsps)
+    courriel = readCourriel()
+    if rsps == courriel:
+        chk = "OK"
+        print("courriel OK")
+    else:
+        print("courriel NO")
+        chk = "NO"
+    return render(request, "courrielcheck.html", {"rsps": rsps, "chk": chk})
+
+# def checkCourriel_avant_model(request):
+#     print("- checkCourriel :")
+#     rsps = request.GET['mailInput']
+#     print("rsps : " + rsps)
+#     courriel = readCourriel()
+#     if rsps == courriel:
+#         print("Courriel OK !")
+#         html = """
+#                 <h4 style='text-align: center'>""" + rsps + """ : OK</h4>
+#                 <br/><br/>
+#                 <section id='indexSection' style='text-align: center'>
+#                 <a href='http://127.0.0.1:8000/'>index</a>
+#                 </section>
+#                 """
+#     else:
+#         print("Courriel NOT OK !")
+#         html = """
+#                 <h4 style='text-align: center'>""" + rsps + """ : NO</h4>
+#                 <br/><br/>
+#                 <section id='indexSection' style='text-align: center'>
+#                 <a href='http://127.0.0.1:8000/'>index</a>
+#                 </section>
+#                 """
+#     print(html)
+#     return HttpResponse(html)
+
+
+'''
+def index_1(request):
+    html = """
+    <!Doctype html>
+    <html lang='fr'>
+    <html>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=width-device-width, initial-scale=1.0'>
+    <title>Hello World</title>
+    </head>
+    <body>
+    <h4 style='text-align:center;'>! Hello World !</h4>
+    <a href='../bonjour'>bonjour</a>
+    </body>
+    </html>
+    return HttpResponse(html)
+'''
+
+def bonjour(request):
+    html = """
+    <!Doctype html>
+    <html lang='fr'>
+    <html>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=width-device-width, initial-scale=1.0'>
+    <title>Bonjour Monde</title>
+    </head>
+    <body>
+    <h4 style='text-align:center;'>! Bonjour Monde !</h4>
+    <a href='../index'>index</a>
+    </body>
+    </html>
+    """
+    return HttpResponse(html)

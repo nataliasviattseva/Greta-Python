@@ -1,0 +1,40 @@
+body
+{ font-family: Verdana, sans-serif
+; font-size: 14px
+}
+
+/** HEADER **/
+header
+{ text-align: left
+}
+
+header h3
+{ text-align: center
+; color: darkblue
+}
+
+#img {
+  display: flex;
+  justify-content: center;
+}
+
+#divFormationDjango
+{ text-align: center
+; font-size: 12px
+; color: blue
+; font-style: italic
+}
+
+#mailSection
+{ text-align: center
+}
+
+#indexSection
+{ text-align: left
+}
+
+#checkSpan
+{ color: red
+; font-weight: bold
+}
+

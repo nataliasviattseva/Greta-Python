@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+        <title>{% block pageTitle %}{% endblock %}</title>
+    </head>
+    <body onload="setDivWidth();">
+        <header>
+            <section id="headerTitle">{% block headerTitle %}{% endblock %}</section>
+            <section id="headerContent">&nbsp;&nbsp;{% block headerContent %}{% endblock %}</section>
+        </header>
+        {% block bodyContent %}{% endblock %}
+        <script language="javaScript" type="text/javaScript" src="/static/jvs/script.js"></script>
+    </body>
+</html>

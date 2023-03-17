@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>GRETA 78 / Formation Python-Django</title>
+        <link rel="stylesheet" href="./static/css/style.css"/>
+        <meta name="viewport" content="width=device-width, initial-scal=1.0">
+    </head>
+    <body onload="setDivWidth();">
+        <header>
+            <div id="img">
+                <img src="./static/img/GRETA-78.png" alt="GRETA de Yvelines" id="imgGreta78" onClick="setSectionPosition();">
+            </div>
+            <div id="divFormationDjango"> -- Formation Python-Django --</div>
+            <h3>! Bonjour ! </h3>
+        </header>
+        <main>
+            <br/><br/>
+            <section id="mailSection">
+                <form id="mailForm" name="mailForm" action="checkCourriel" method="GET">
+<!--                <form id="mailForm" name="mailForm" action="">-->
+                    <label for="mailInput">Courriel du Greta 78 ?</label>
+                    &nbsp;<input type="email" id="mailInput" name="mailInput" required/>
+                    &nbsp;<input type="submit" value="GO"/>
+<!--                &nbsp<input type="submit" value="GO" onClick="checkSubmit();"/>-->
+                </form>
+                <br/>
+                <span id="checkSpan"></span>
+                <br/><br/>
+                <span id="urlSpan"></span>
+            </section>
+            <br/><br/>
+        </main>
+
+        <script src="./static/jvs/script.js"></script>
+    </body>
+</html>
