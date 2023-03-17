@@ -5,27 +5,26 @@
 {% block headerTitle %}{% endblock %}
 
 {% block headerContent %}
-    <div id="img">
-        <img src="/static/img/GRETA-78.png" alt="GRETA de Yvelines" id="imgGreta78" onClick="setSectionPosition();">
-    </div>
-    <div id="divFormationDjango"> -- Formation Python-Django --</div>
-    <h3>! Bonjour !</h3>
+<div id="img">
+    <img src="/static/img/GRETA-78.png" alt="GRETA de Yvelines" id="imgGreta78" onClick="setSectionPosition();">
+</div>
+<div id="divFormationDjango"> -- Formation Python-Django --</div>
+<h3>! Bonjour !</h3>
 {% endblock %}
 
 {% block bodyContent %}
-    <main>
-        <br/><br/>
-        <section id="mailSection">
-            <form id="mailForm" name="mailForm" action="{% url 'checkCourriel' %}" method="GET">
-                <label for="mailInput">Courriel du Greta 78 ?</label>
-                &nbsp;<input type="email" id="mailInput" name="mailInput" required/>
-                &nbsp;<input type="submit" value="GO"/>
-            </form>
-            <br/>
-            <span id="checkSpan"></span>
-            <br/><br/>
-            <span id="urlSpan"></span>
-        </section>
-        <br/><br/>
-    </main>
+<main><br/>
+    <section id="mailSection">
+        <!--            <form id="mailForm" name="mailForm" action="{% url 'checkCourriel' %}" method="GET">-->
+        <form id="mailForm" name="mailForm" action="/checkCourriel" method="GET">
+            <label for="mailInput">Courriel du Greta 78 ?</label>
+            &nbsp;<input type="email" id="mailInput" name="mailInput" required/>
+            &nbsp;<input type="submit" value="GO"/>
+        </form>
+        <br/>
+        <span id="checkSpan"></span><br/>
+        <span id="urlSpan"></span>
+    </section>
+    <br/>
+</main>
 {% endblock %}

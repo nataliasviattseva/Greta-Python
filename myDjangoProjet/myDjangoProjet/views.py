@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 import myDjangoProjet.fileManager as FM
+import myDjangoProjet.dataManager as DM
 
 
 def index(request):
@@ -31,6 +32,25 @@ def checkCourriel(request):
         print("courriel NO")
         chk = "NO"
     return render(request, "courrielcheck.html", {"rsps": rsps, "chk": chk})
+
+
+def data_access_sqlite(request):
+    data_base = DM.SQLite("../myDjangoProjet/dbGreta78.db")
+    data_base.set_connexion()
+    data_set = data_base.select_all("tbCartoons")
+    print("data_access_sqlite.data_set: " + str(data_set))
+    data_base.close_connexion()
+    return render(request, 'data_display_sqlite.html', {'data_list': data_set})
+
+
+def data_access_postgresql(request):
+    data_base = DM.PostgreSQL("db_greta78")
+    data_base.set_connexion()
+    data_set = data_base.select_all("tb_formateur")
+    print("data_access_postgresql.data_set: " + str(data_set))
+    data_base.close_connexion()
+    return render(request, 'data_display_postgresql.html', {'data_list': data_set})
+
 
 # def checkCourriel_avant_model(request):
 #     print("- checkCourriel :")
@@ -77,6 +97,7 @@ def index_1(request):
     </html>
     return HttpResponse(html)
 '''
+
 
 def bonjour(request):
     html = """

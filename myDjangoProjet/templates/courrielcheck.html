@@ -5,31 +5,36 @@
 {% block headerTitle %}{% endblock %}
 
 {% block headerContent %}
-    <div id="img">
-        <img src="/static/img/GRETA-78.png" alt="GRETA de Yvelines" id="imgGreta78" onClick="setSectionPosition();">
-    </div>
-    <div id="divFormationDjango"> -- Formation Python-Django --</div>
-    <h3>! Bonjour !</h3>
+<div id="img">
+    <img src="/static/img/GRETA-78.png" alt="GRETA de Yvelines" id="imgGreta78" onClick="setSectionPosition();">
+</div>
+<div id="divFormationDjango"> -- Formation Python-Django --</div>
+<h3>! Bonjour !</h3>
 {% endblock %}
 
 {% block bodyContent %}
-    <main>
-        <br/><br/>
-        <section id="mailSection">
-            <form id="mailForm" name="mailForm" action="{% url 'checkCourriel' %}" method="GET">
-                <label for="mailInput">Courriel du Greta 78 ?</label>
-                &nbsp;<input type="email" id="mailInput" name="mailInput" required/>
-                &nbsp;<input type="submit" value="GO"/>
-            </form>
-            <br/>
-            <span id="checkSpan">{{ rsps }} : {% if chk == "OK" %} correct {% else %} incorrect {% endif %}</span>
-            <br/><br/>
-            <span id="urlSpan"></span>
-        </section>
-        <br/><br/>
-    </main>
-    </br></br>
-    <section id='indexSection' style='text-align: center'>
-    <a href='http://127.0.0.1:8000/'>index</a>
+<main><br/>
+    <section id="mailSection">
+        <!--            <form id="mailForm" name="mailForm" action="{% url 'checkCourriel' %}" method="GET">-->
+        <form id="mailForm" name="mailForm" action="/checkCourriel" method="GET">
+            <label for="mailInput">Courriel du Greta 78 ?</label>
+            &nbsp;<input type="email" id="mailInput" name="mailInput" required/>
+            &nbsp;<input type="submit" value="GO"/>
+        </form>
+        <br/>
+        <span id="checkSpan">{{ rsps }} : {% if chk == "OK" %} correct {% else %} incorrect {% endif %}</span><br/>
+        <span id="urlSpan"></span>
     </section>
+    <br/>
+</main>
+<section id='indexSection' style='text-align: center'>
+    <a href='/index'>index</a>
+</section></br>
+<section id='dataSection' style='text-align: center'>
+    <div>Data access:</div>
+    {% if chk == "OK" %}
+    <a href='/data_access_sqlite'>SQLite</a>
+    <a href='/data_access_postgresql'>PostgreSQL</a>
+    {% endif %}
+</section>
 {% endblock %}

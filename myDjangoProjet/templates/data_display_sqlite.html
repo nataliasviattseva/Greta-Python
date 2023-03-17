@@ -1,0 +1,51 @@
+{% extends 'generic.html' %}
+
+{% block pageTitle %}GRETA 78 / Formation PYTHON_DJANGO {% endblock %}
+
+{% block headerTitle %}{% endblock %}
+
+{% block headerContent %}
+<div id="img" xmlns="http://www.w3.org/1999/html">
+    <img src="/static/img/GRETA-78.png" alt="GRETA de Yvelines" id="imgGreta78" onClick="setSectionPosition();">
+</div>
+<div id="divFormationDjango"> -- Formation Python-Django --</div>
+<h3>! Bonjour !</h3>
+{% endblock %}
+
+{% block bodyContent %}
+<main><br/>
+    <section id="data_section">
+        <div>Data list : &nbsp;&nbsp;{{ data_list }}</div>
+        </br>
+        <div>Data list 0: &nbsp;&nbsp;{{ data_list.0}}</div>
+        </br>
+        {% for lst in data_list %}
+        <div>
+            id: {{ lst.0 }}</br>
+            Nom: {{ lst.1 }}</br>
+            Prenom: {{ lst.2 }}</br>
+            email: {{ lst.3 }}</br>
+        </div>
+        </br>
+        {% endfor %}</br>
+        {% for lst in data_list %}
+        <ul>
+            <li>
+                {% for dta in lst %}
+                <ul style="list-style-type: '- '">
+                    <li>
+                        {{ dta }}
+                    </li>
+                </ul>
+                {% endfor %}
+            </li>
+        </ul>
+        {% endfor %}
+    </section>
+    </br>
+    <section id='indexSection' style='text-align: center'>
+        <a href='/index'>index</a>
+        <button type="button" onclick="javascript:history.back()">Back</button>
+    </section>
+</main>
+{% endblock %}
