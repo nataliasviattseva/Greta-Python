@@ -17,8 +17,6 @@ class Personnage:
         self.agilite = agilite
         self.defense = defence
         self.intelligence = intelligence
-        # self.magie = magie
-        # self.karma = karma
         self.est_mort()
         self.esquive = False
 
@@ -41,14 +39,17 @@ class Personnage:
             self.sante += points_de_sante_gagne
             return f"{self.nom} a été soigné. Ses points de santes valent maintenant {self.sante}"
         else:
-            return f"{self.nom} ne peut être soigné par ?Gandalf?, car {self.nom} est morte !"
+            return f"{self.nom} ne peut être soigné par ? {self.nom}, car {self.nom} est morte !"
 
     def attaque(self, autre_personnage):
         if not self.est_mort() and not autre_personnage.est_mort():
             if autre_personnage.esquive == False:
                 self.points_de_degats = round(0.6 * self.force)
                 autre_personnage.sante -= self.points_de_degats
-                return f"points de degats (0.6 * {self.force}) : {self.points_de_degats}"
+                return f"""{self.nom} attaque {autre_personnage.nom}.
+Points de degats (0.6 * {self.force}) : {self.points_de_degats}.
+Sante de {self.nom}: {self.sante}.
+Sante de {autre_personnage.nom}: {autre_personnage.sante}"""
         elif self.est_mort():
             return f"{self.nom} ne peut attaque personne: il est morte !"
         elif autre_personnage.est_mort():
@@ -87,22 +88,17 @@ Esquive : calcul de agilité de {self.nom} : {agilite_effectue} contre {autre_pe
 
     def autobataille(self, autre_personnage):
         liste = []
-        fin = False
-        while not fin:
+        while True:
             turn = 0
-            if turn == 0:
-                autre_personnage.attaque(self)
-                self.sante -= 5
-                turn = 1
-                liste.append(f"{autre_personnage.nom} attaque !\n{self.nom} sante est {self.sante}\n")
-            if turn == 1:
-                self.attaque(autre_personnage)
-                autre_personnage.sante -= 5
-                liste.append(f"{self.nom} attaque ! \n{autre_personnage.nom} sante est {autre_personnage.sante}\n")
-            if self.est_mort():
-                fin = True
-                liste.append(f"{self.nom} est mort !\n")
-            if autre_personnage.est_mort():
-                fin = True
-                liste.append(f"{autre_personnage.nom} est mort !\n")
+            if not self.est_mort() and not autre_personnage.est_mort():
+                if turn == 0 and not autre_personnage.est_mort():
+                    autre_personnage.attaque(self)
+                    turn = 1
+                    liste.append(f"{autre_personnage.nom} attaque !\n{self.nom} sante est {self.sante}\n")
+                if turn == 1 and not self.est_mort():
+                    self.attaque(autre_personnage)
+                    liste.append(f"{self.nom} attaque ! \n{autre_personnage.nom} sante est {autre_personnage.sante}\n")
+            else:
+                liste.append(f"{self.nom} or {autre_personnage.nom} est mort !\n")
+                break
         return '\n'.join(liste)
