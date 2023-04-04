@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+<!--        <img src="{% static 'images/logo.png' %}" alt="Logo">-->
+        <h1 class="mt-4">{{ project_name }}</h1>
+        <p class="lead mb-5">Welcome to my awesome project!</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <a href="{% url 'question1' %}" class="btn btn-primary btn-lg mb-4">Question 1</a>
+      </div>
+      <div class="col-md-6 text-center">
+          <a href="{% url 'question2' %}" class="btn btn-link btn-lg btn-block rounded-0 shadow-sm">Question 2</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <a href="{% url 'question3' %}" class="btn btn-primary btn-lg mb-4">Question 3</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

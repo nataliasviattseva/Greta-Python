@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main><br/>
+    <section id="data_section">
+        <p class="lead mb-5">Question 2</p>
+<!--        <img src="{{ graph_file }}" alt="My Graph">-->
+<!--        <img src="{% static 'images/q2_pie.png' %}" alt="Pie graph">-->
+        <img src="{% static 'images/q2_barplot.png' %}" alt="Barplot graph">
+    </section>
+
+    </br>
+    <section id='indexSection' style='text-align: center'>
+        <a href='/index'>index</a>
+        <button type="button" onclick="javascript:history.back()">Back</button>
+    </section>
+</main>
+{% endblock %}
