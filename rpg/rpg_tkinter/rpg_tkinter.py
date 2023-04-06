@@ -15,11 +15,11 @@ class Main(Frame):
         Frame.__init__(self, master)
         self.personnage_gentil = liste_personnages_gentils[0][0]
         self.image_du_personnage_gentil = liste_personnages_gentils[0][1]
-        self.choix_personnage_gentil = StringVar()
+        self.choix_personnage_gentil = StringVar(None, liste_personnages_gentils[0][0].nom)
 
         self.personnage_mechant = liste_personnages_mechants[0][0]
         self.image_du_personnage_mechant = liste_personnages_mechants[0][1]
-        self.choix_personnage_mechant = StringVar()
+        self.choix_personnage_mechant = StringVar(None, liste_personnages_mechants[0][0].nom)
 
         self.race_personnage_gentil = StringVar()
         self.nom_personnage_gentil = StringVar()
@@ -64,8 +64,10 @@ class Main(Frame):
     def fenetre_choisir_personnage(self):
         self.fenetre_nouveau = Toplevel(root)
         self.fenetre_nouveau.title("Choisir le personnage")
-        self.fenetre_nouveau.geometry("340x380")
+        self.fenetre_nouveau.geometry("380x380")
         self.choisir_personnages()
+        Button(self.fenetre_nouveau, text="Fermer", command=self.fenetre_nouveau.destroy).grid(row=0, column=2, padx=5,
+                                                                                               pady=5, sticky="n")
 
     def choisir_personnages(self):
         self.choisir_personnage(liste_personnages_gentils, self.choix_personnage_gentil, number=0,
@@ -75,7 +77,7 @@ class Main(Frame):
 
     def choisir_personnage(self, liste, choix_personnage, number, action):
         self.cadre_choisir_personnage = Frame(self.fenetre_nouveau, borderwidth=4, relief=GROOVE)
-        self.cadre_choisir_personnage.grid(row=0, column=number, padx=5, pady=5)
+        self.cadre_choisir_personnage.grid(row=0, column=number, padx=5, pady=5, sticky="n")
         for i in range(len(liste)):
             self.radiobutton_personnages = Radiobutton(self.cadre_choisir_personnage,
                                                        text=liste[i][0].nom,
@@ -130,14 +132,16 @@ class Main(Frame):
         self.cadre_personnage_gentil.grid_propagate(False)
         self.cadre_personnage_gentil.grid(row=0, column=0, padx=5, pady=5)
         # Cadre pour l'image du Personnage
-        self.cadre_image_personnage_gentil = Frame(self.cadre_personnage_gentil, width=180, height=240, borderwidth=4,
+        self.cadre_image_personnage_gentil = Frame(self.cadre_personnage_gentil, width=180, height=240,
+                                                   borderwidth=4,
                                                    relief=GROOVE)
         self.cadre_image_personnage_gentil.grid_propagate(False)
         self.cadre_image_personnage_gentil.grid(row=0, column=0, padx=5, pady=5, sticky=W)
         self.add_photo(self.cadre_image_personnage_gentil, 160, 220, self.image_du_personnage_gentil)
 
         # Cadre pour caractéristiques du Personnage
-        self.cadre_caract_personnage_gentil = Frame(self.cadre_personnage_gentil, width=160, height=240, borderwidth=4,
+        self.cadre_caract_personnage_gentil = Frame(self.cadre_personnage_gentil, width=160, height=240,
+                                                    borderwidth=4,
                                                     relief=GROOVE)
         self.cadre_caract_personnage_gentil.grid_propagate(False)
         self.cadre_caract_personnage_gentil.grid(row=0, column=1, padx=5, pady=5, sticky=NE)
@@ -152,19 +156,26 @@ class Main(Frame):
                                                                                                    padx=5, sticky=W)
         Label(self.cadre_caract_personnage_gentil, textvariable=self.force_personnage_gentil).grid(row=3, column=0,
                                                                                                    padx=5, sticky=W)
-        Label(self.cadre_caract_personnage_gentil, textvariable=self.endurance_personnage_gentil).grid(row=4, column=0,
-                                                                                                       padx=5, sticky=W)
-        Label(self.cadre_caract_personnage_gentil, textvariable=self.agilite_personnage_gentil).grid(row=5, column=0,
-                                                                                                     padx=5, sticky=W)
-        Label(self.cadre_caract_personnage_gentil, textvariable=self.defense_personnage_gentil).grid(row=6, column=0,
-                                                                                                     padx=5, sticky=W)
+        Label(self.cadre_caract_personnage_gentil, textvariable=self.endurance_personnage_gentil).grid(row=4,
+                                                                                                       column=0,
+                                                                                                       padx=5,
+                                                                                                       sticky=W)
+        Label(self.cadre_caract_personnage_gentil, textvariable=self.agilite_personnage_gentil).grid(row=5,
+                                                                                                     column=0,
+                                                                                                     padx=5,
+                                                                                                     sticky=W)
+        Label(self.cadre_caract_personnage_gentil, textvariable=self.defense_personnage_gentil).grid(row=6,
+                                                                                                     column=0,
+                                                                                                     padx=5,
+                                                                                                     sticky=W)
         Label(self.cadre_caract_personnage_gentil, textvariable=self.intelligence_personnage_gentil).grid(row=7,
                                                                                                           column=0,
                                                                                                           padx=5,
                                                                                                           sticky=W)
 
         # cadre pour boutons du actions du Personnage
-        self.cadre_boutons_personnage_gentil = Frame(self.cadre_personnage_gentil, width=350, height=140, borderwidth=4,
+        self.cadre_boutons_personnage_gentil = Frame(self.cadre_personnage_gentil, width=350, height=140,
+                                                     borderwidth=4,
                                                      relief=GROOVE)
         self.cadre_boutons_personnage_gentil.grid_propagate(False)
         self.cadre_boutons_personnage_gentil.grid(row=10, column=0, columnspan=2, padx=5, pady=5, sticky=W)
@@ -172,13 +183,18 @@ class Main(Frame):
         # Bouton pour attaque du Personnage
         self.bouton_attaque_personnage_gentil = Button(self.cadre_boutons_personnage_gentil, text="Attaque",
                                                        command=self.attaque_de_personnage_gentil)
-        self.bouton_attaque_personnage_gentil.grid(row=0, column=0, padx=5, sticky=W)
+        self.bouton_attaque_personnage_gentil.grid(row=0, column=0, padx=5, pady=5, sticky=W, stick='we')
         self.bouton_perdre_sante_personnage_gentil = Button(self.cadre_boutons_personnage_gentil, text="Sante -5",
                                                             command=self.perdre_sante_personnage_gentil)
-        self.bouton_perdre_sante_personnage_gentil.grid(row=0, column=1, padx=5, sticky=W)
+        self.bouton_perdre_sante_personnage_gentil.grid(row=0, column=1, padx=5, pady=5, sticky=W, stick='we')
         self.bouton_soigne_sante_personnage_gentil = Button(self.cadre_boutons_personnage_gentil, text="Sante +5",
                                                             command=self.soigne_sante_personnage_gentil)
-        self.bouton_soigne_sante_personnage_gentil.grid(row=0, column=2, padx=5, sticky=W)
+        self.bouton_soigne_sante_personnage_gentil.grid(row=0, column=2, padx=5, pady=5, sticky=W, stick='we')
+        self.bouton_autobataille = Button(self.cadre_boutons_personnage_gentil, text="Autobataille",
+                                          command=self.autobataille)
+        self.bouton_autobataille.grid_propagate()
+        self.bouton_autobataille.grid(row=0, column=3, padx=5, pady=5, stick='we')
+
         # Epee: + force, armure: + defence, bottes: + agilite
         self.var_epee = IntVar()
         self.var_armure = IntVar()
@@ -189,22 +205,19 @@ class Main(Frame):
                                                   onvalue=1,
                                                   offvalue=0,
                                                   command=self.epee)
-        self.epee_personnage_gentil.grid(row=1, column=0, padx=5, sticky=W)
-        self.armure_personage_gentil = Checkbutton(self.cadre_boutons_personnage_gentil, text="Armure",
-                                                   variable=self.var_armure, onvalue=1,
-                                                   offvalue=0,
-                                                   command=self.armure)
-        self.armure_personage_gentil.grid(row=1, column=1, padx=5, sticky=W)
+        self.epee_personnage_gentil.grid(row=1, column=0, padx=5, pady=2, sticky=W)
+        self.armure_personnage_gentil = Checkbutton(self.cadre_boutons_personnage_gentil, text="Armure",
+                                                    variable=self.var_armure, onvalue=1,
+                                                    offvalue=0,
+                                                    command=self.armure)
+        self.armure_personnage_gentil.grid(row=2, column=0, padx=5, pady=2, sticky=W)
         self.bottes_personnage_gentil = Checkbutton(self.cadre_boutons_personnage_gentil, text="Bottes",
                                                     variable=self.var_bottes, onvalue=1,
                                                     offvalue=0,
                                                     command=self.bottes)
-        self.bottes_personnage_gentil.grid(row=1, column=2, padx=5, sticky=W)
+        self.bottes_personnage_gentil.grid(row=3, column=0, padx=5, pady=2, sticky=W)
 
-        self.bouton_autobataille = Button(self.cadre_boutons_personnage_gentil, text="Autobataille",
-                                          command=self.autobataille)
-        self.bouton_autobataille.grid_propagate()
-        self.bouton_autobataille.grid(row=100, column=100)
+
 
     def personnage_affichage_mechant(self):
         self.cadre_personnage_mechant = Frame(self.cadre_jeu_principal, width=380, height=440, borderwidth=4,
@@ -212,7 +225,8 @@ class Main(Frame):
         self.cadre_personnage_mechant.grid_propagate(False)
         self.cadre_personnage_mechant.grid(row=0, column=1, padx=5, pady=5)
         # Cadre pour l'image du Personnage
-        self.cadre_image_personnage_mechant = Frame(self.cadre_personnage_mechant, width=180, height=240, borderwidth=4,
+        self.cadre_image_personnage_mechant = Frame(self.cadre_personnage_mechant, width=180, height=240,
+                                                    borderwidth=4,
                                                     relief=GROOVE)
         self.cadre_image_personnage_mechant.grid_propagate(False)
         self.cadre_image_personnage_mechant.grid(row=0, column=0, padx=5, pady=5, sticky=W)
@@ -227,21 +241,30 @@ class Main(Frame):
         # caractéristiques du personnage
         self.set_caracteristiques_personnage_mechant()
         Label(self.cadre_caract_personnage_mechant, textvariable=self.race_personnage_mechant).grid(row=0, column=0,
-                                                                                                    padx=5, sticky=W)
+                                                                                                    padx=5,
+                                                                                                    sticky=W)
         Label(self.cadre_caract_personnage_mechant, textvariable=self.nom_personnage_mechant).grid(row=1, column=0,
                                                                                                    padx=5, sticky=W)
-        Label(self.cadre_caract_personnage_mechant, textvariable=self.sante_personnage_mechant).grid(row=2, column=0,
-                                                                                                     padx=5, sticky=W)
-        Label(self.cadre_caract_personnage_mechant, textvariable=self.force_personnage_mechant).grid(row=3, column=0,
-                                                                                                     padx=5, sticky=W)
+        Label(self.cadre_caract_personnage_mechant, textvariable=self.sante_personnage_mechant).grid(row=2,
+                                                                                                     column=0,
+                                                                                                     padx=5,
+                                                                                                     sticky=W)
+        Label(self.cadre_caract_personnage_mechant, textvariable=self.force_personnage_mechant).grid(row=3,
+                                                                                                     column=0,
+                                                                                                     padx=5,
+                                                                                                     sticky=W)
         Label(self.cadre_caract_personnage_mechant, textvariable=self.endurance_personnage_mechant).grid(row=4,
                                                                                                          column=0,
                                                                                                          padx=5,
                                                                                                          sticky=W)
-        Label(self.cadre_caract_personnage_mechant, textvariable=self.agilite_personnage_mechant).grid(row=5, column=0,
-                                                                                                       padx=5, sticky=W)
-        Label(self.cadre_caract_personnage_mechant, textvariable=self.defense_personnage_mechant).grid(row=6, column=0,
-                                                                                                       padx=5, sticky=W)
+        Label(self.cadre_caract_personnage_mechant, textvariable=self.agilite_personnage_mechant).grid(row=5,
+                                                                                                       column=0,
+                                                                                                       padx=5,
+                                                                                                       sticky=W)
+        Label(self.cadre_caract_personnage_mechant, textvariable=self.defense_personnage_mechant).grid(row=6,
+                                                                                                       column=0,
+                                                                                                       padx=5,
+                                                                                                       sticky=W)
         Label(self.cadre_caract_personnage_mechant, textvariable=self.intelligence_personnage_mechant).grid(row=7,
                                                                                                             column=0,
                                                                                                             padx=5,
@@ -256,13 +279,13 @@ class Main(Frame):
         # Bouton pour attaque du Personnage
         self.bouton_attaque_personnage_mechant = Button(self.cadre_boutons_personnage_mechant, text="Attaque",
                                                         command=self.attaque_de_personnage_mechant)
-        self.bouton_attaque_personnage_mechant.grid(row=0, column=0, padx=5, sticky=W)
+        self.bouton_attaque_personnage_mechant.grid(row=0, column=0, padx=5, pady=5, sticky=W)
         self.bouton_perdre_sante_personnage_mechant = Button(self.cadre_boutons_personnage_mechant, text="Sante -5",
                                                              command=self.perdre_sante_personnage_mechant)
-        self.bouton_perdre_sante_personnage_mechant.grid(row=0, column=1, padx=5, sticky=W)
+        self.bouton_perdre_sante_personnage_mechant.grid(row=0, column=1, padx=5, pady=5, sticky=W)
         self.bouton_soigne_sante_personnage_mechant = Button(self.cadre_boutons_personnage_mechant, text="Sante +5",
                                                              command=self.soigne_sante_personnage_mechant)
-        self.bouton_soigne_sante_personnage_mechant.grid(row=0, column=2, padx=5, sticky=W)
+        self.bouton_soigne_sante_personnage_mechant.grid(row=0, column=2, padx=5, pady=5, sticky=W)
 
     def journal(self):
         self.cadre_journal = Frame(self.cadre_jeu_principal, width=380, height=440, borderwidth=4, relief=GROOVE)
@@ -287,11 +310,17 @@ class Main(Frame):
     def set_caracteristiques_personnage_gentil(self):
         self.race_personnage_gentil.set(f"Race : {self.personnage_gentil.race}")
         self.nom_personnage_gentil.set(f"Nom : {self.personnage_gentil.nom}")
-        # if qui.sante <= 0:
-        #     self.label_sante = self.sante_label.set(f"Sante : MORT")
-        # else:
-        self.label_sante_personnage_gentil = self.sante_personnage_gentil.set(
-            f"Sante : {self.personnage_gentil.sante}")
+        if self.personnage_gentil.est_mort():
+            self.sante_personnage_gentil.set(f"Sante : MORT")
+            self.bouton_attaque_personnage_gentil["state"] = "disabled"
+            self.bouton_perdre_sante_personnage_gentil["state"] = "disabled"
+            self.bouton_soigne_sante_personnage_gentil["state"] = "disabled"
+            self.epee_personnage_gentil["state"] = "disabled"
+            self.armure_personnage_gentil["state"] = "disabled"
+            self.bottes_personnage_gentil["state"] = "disabled"
+            self.bouton_autobataille["state"] = "disabled"
+        else:
+            self.sante_personnage_gentil.set(f"Sante : {self.personnage_gentil.sante}")
         self.force_personnage_gentil.set(f"Force : {self.personnage_gentil.force}")
         self.endurance_personnage_gentil.set(f"Endurance : {self.personnage_gentil.endurance}")
         self.agilite_personnage_gentil.set(f"Agilite : {self.personnage_gentil.agilite}")
@@ -301,11 +330,13 @@ class Main(Frame):
     def set_caracteristiques_personnage_mechant(self):
         self.race_personnage_mechant.set(f"Race : {self.personnage_mechant.race}")
         self.nom_personnage_mechant.set(f"Nom : {self.personnage_mechant.nom}")
-        # if qui.sante <= 0:
-        #     self.label_sante = self.sante_label.set(f"Sante : MORT")
-        # else:
-        self.label_sante_personnage_mechant = self.sante_personnage_mechant.set(
-            f"Sante : {self.personnage_mechant.sante}")
+        if self.personnage_mechant.est_mort():
+            self.sante_personnage_mechant.set(f"Sante : MORT")
+            self.bouton_attaque_personnage_mechant["state"] = "disabled"
+            self.bouton_perdre_sante_personnage_mechant["state"] = "disabled"
+            self.bouton_soigne_sante_personnage_mechant["state"] = "disabled"
+        else:
+            self.sante_personnage_mechant.set(f"Sante : {self.personnage_mechant.sante}")
         self.force_personnage_mechant.set(f"Force : {self.personnage_mechant.force}")
         self.endurance_personnage_mechant.set(f"Endurance : {self.personnage_mechant.endurance}")
         self.agilite_personnage_mechant.set(f"Agilite : {self.personnage_mechant.agilite}")
@@ -379,7 +410,6 @@ class Main(Frame):
         self.set_caracteristiques_personnage_gentil()
         self.set_caracteristiques_personnage_mechant()
         self.journal_text.insert(END, f"{bataille}\n")
-
 
 root = Tk()
 app = Main(root)

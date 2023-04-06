@@ -44,7 +44,7 @@ class Personnage:
     def attaque(self, autre_personnage):
         if not self.est_mort() and not autre_personnage.est_mort():
             if autre_personnage.esquive == False:
-                self.points_de_degats = round(0.6 * self.force)
+                self.points_de_degats = round(0.15 * self.force)
                 autre_personnage.sante -= self.points_de_degats
                 return f"""{self.nom} attaque {autre_personnage.nom}.
 Points de degats (0.6 * {self.force}) : {self.points_de_degats}.
@@ -69,7 +69,6 @@ Sante de {autre_personnage.nom}: {autre_personnage.sante}"""
 
     def esquive_attaque(self, autre_personnage):
         if not self.est_mort() and not autre_personnage.est_mort():
-            agilite_effectue = round(self.agilite * 1.2)
             agilite_effectue = round(self.agilite * 1.2)
             if agilite_effectue > autre_personnage.force:
                 self.esquive = True
