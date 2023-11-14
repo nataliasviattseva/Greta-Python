@@ -130,6 +130,8 @@ liste_personnages_gentils = [[aragorn, f"images\\aragorn.png"],
                              [pippin, f"images\\pippin.png"],
                              [sam, f"images\\sam.png"]]
 
-liste_personnages_mechants = [[gothmog, f"images\\gothmog.png"],
-                              [saruman, f"images\\saruman.png"],
-                              [sauron, f"images\\sauron.png"]]
+# liste_personnages_mechants = [[gothmog, f"images\\gothmog.png"],
+#                               [saruman, f"images\\saruman.png"],
+#                               [sauron, f"images\\sauron.png"]]
+
+liste_personnages_mechants = [[sauron, f"images\\sauron.png"]]
